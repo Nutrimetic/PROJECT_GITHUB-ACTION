@@ -1,0 +1,15 @@
+group:
+  - files:
+      - source: sync/.editorconfig
+        dest: .editorconfig
+      - source: sync/.gitignore
+        dest: .gitignore
+      - source: sync/.dockerignore
+        dest: .dockerignore
+      - source: sync/CODEOWNERS
+        dest: CODEOWNERS
+
+      #- source: sync/workflows/create_new_PR_when_feature_branch_newly_created.yml
+      #  dest: .github/workflows/create_new_PR_when_feature_branch_newly_created.yml
+    repos: |
+      Nutrimetic/PROJECT_Python_scrapper

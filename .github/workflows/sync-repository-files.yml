@@ -1,0 +1,29 @@
+name: Sync Files
+on:
+  schedule: [ { cron: "0 0 * * 1" } ]
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/sync-repository-files.yml'
+      - '.github/sync-files.yml'
+      - 'sync/*'
+      - 'sync/**/*'
+
+jobs:
+  sync:
+    name: Synchronize common files
+    runs-on: ubuntu-latest
+    concurrency: files
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@master
+      - name: Sync
+        uses: BetaHuhn/repo-file-sync-action@v1.21.1
+        with:
+          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_EACH_FILE: false
+          CONFIG_PATH: .github/sync-files.yml
+          SKIP_PR: false
+          COMMIT_BODY: 'Sync automatically files with github actions'
