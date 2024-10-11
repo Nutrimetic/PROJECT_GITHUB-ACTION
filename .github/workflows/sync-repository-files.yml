@@ -27,3 +27,4 @@ jobs:
           CONFIG_PATH: .github/sync-files.yml
           SKIP_PR: false
           COMMIT_BODY: 'Sync automatically files with github actions'
+          PR_BODY: 'Sync automatically files with github actions from the repo PROJECT_GITHUB-ACTION'
